@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import AmazingPrizes from "./AmazingPrizes";
 
 const UserForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
+    mobileNumber: '',
+    email: '',
     date: '',
     billImage: null
   });
@@ -25,7 +29,10 @@ const UserForm = () => {
     e.preventDefault();
     setLoading(true);
     const data = new FormData();
-    data.append('name', formData.name);
+    data.append('firstName', formData.firstName);
+    data.append('lastName', formData.lastName);
+    data.append('mobileNumber', formData.mobileNumber);
+    data.append('email', formData.email);
     data.append('date', formData.date);
     data.append('billImage', formData.billImage);
 
@@ -35,7 +42,7 @@ const UserForm = () => {
         body: data,
       });
       if (response.ok) {
-        setFormData({ name: '', date: '', billImage: null });
+        setFormData({ firstName: '', lastName: '', mobileNumber: '', email: '', date: '', billImage: null });
         setPreview(null);
         alert('Form submitted successfully!');
       }
@@ -48,36 +55,66 @@ const UserForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 md:p-6 lg:p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div className="min-h-screen bg-[#fae9e5] flex flex-col items-center">
+      <div className="w-full max-w-4xl">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden">
           <div className="md:flex">
             {/* Form Section */}
-            <div className="md:w-1/2 p-6 md:p-8 lg:p-10">
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">Submit Bill</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="md:w-1/2 p-4">
+              <h2 className="text-3xl font-bold text-gray-800 mb-6">Submit Bill</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Name</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">First Name</label>
                   <input
                     type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    className="w-full px-3 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Date</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Last Name</label>
+                  <input
+                    type="text"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                    className="w-full px-3 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Mobile Number</label>
+                  <input
+                    type="tel"
+                    value={formData.mobileNumber}
+                    onChange={(e) => setFormData({...formData, mobileNumber: e.target.value})}
+                    className="w-full px-3 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    className="w-full px-3 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Date</label>
                   <input
                     type="date"
                     value={formData.date}
                     onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    className="w-full px-3 py-2 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Bill Image</label>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Bill Image</label>
                   <div className="relative">
                     <input
                       type="file"
@@ -89,7 +126,7 @@ const UserForm = () => {
                     />
                     <label
                       htmlFor="file-upload"
-                      className="w-full px-4 py-2 rounded-lg border border-dashed border-gray-400 hover:border-blue-500 cursor-pointer flex items-center justify-center text-gray-600 hover:text-blue-500 transition duration-200"
+                      className="w-full px-3 py-2 rounded border border-dashed border-gray-400 hover:border-blue-500 cursor-pointer flex items-center justify-center text-gray-600 hover:text-blue-500"
                     >
                       {formData.billImage ? formData.billImage.name : 'Choose a file'}
                     </label>
@@ -98,10 +135,10 @@ const UserForm = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`w-full py-3 rounded-lg text-white font-semibold transition duration-200 ${
+                  className={`w-full py-2 rounded text-white font-semibold transition ${
                     loading 
                       ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200'
+                      : 'bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500'
                   }`}
                 >
                   {loading ? 'Submitting...' : 'Submit Bill'}
@@ -110,12 +147,12 @@ const UserForm = () => {
             </div>
 
             {/* Preview Section */}
-            <div className="md:w-1/2 bg-gray-50 p-6 md:p-8 lg:p-10 flex items-center justify-center">
+            <div className="md:w-1/2 bg-gray-50 p-4 flex items-center justify-center">
               {preview ? (
                 <img 
                   src={preview} 
                   alt="Bill Preview" 
-                  className="max-w-full max-h-[400px] rounded-lg shadow-md"
+                  className="max-w-full max-h-[300px] rounded shadow"
                 />
               ) : (
                 <div className="text-center text-gray-500">
@@ -129,6 +166,7 @@ const UserForm = () => {
           </div>
         </div>
       </div>
+      <AmazingPrizes/>
     </div>
   );
 };
