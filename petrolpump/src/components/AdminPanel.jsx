@@ -93,10 +93,10 @@ const AdminPanel = () => {
                   reports.map((report) => (
                     <tr key={report._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{report.name}</div>
+                        <div className="text-sm text-gray-900">{report.firstName}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{report.submission_date}</div>
+                        <div className="text-sm text-gray-900">{report.date}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">{report.bill_number}</div>
