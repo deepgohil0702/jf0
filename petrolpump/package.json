@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.4",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "lucide-react": "^0.473.0",
     "react": "^19.0.0",
