@@ -6,7 +6,7 @@ const AdminPanel = () => {
 
   const fetchReports = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/reports?date=${selectedDate}`);
+      const response = await fetch(`https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/reports?date=${selectedDate}`);
       const data = await response.json();
       setReports(data);
     } catch (error) {
