@@ -2,7 +2,7 @@ import React from 'react';
 
 const AmazingPrizes = () => {
   return (
-    <div className="bg-bg-[#fae9e5] flex flex-col items-center p-6">
+    <div className="bg-[#fae9e5] flex flex-col items-center p-6">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4" style={{ fontFamily: 'Arial Bold, sans-serif' }}>
