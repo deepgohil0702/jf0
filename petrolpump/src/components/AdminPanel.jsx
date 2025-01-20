@@ -2,15 +2,24 @@ import { useState, useEffect } from 'react';
 
 const AdminPanel = () => {
   const [reports, setReports] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState('all');
 
   const fetchReports = async () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/reports${selectedDate ? `?date=${selectedDate}` : ''}`);
+      const queryParams = new URLSearchParams();
+      if (startDate) queryParams.append('start_date', startDate);
+      if (endDate) queryParams.append('end_date', endDate);
+      
+      const response = await fetch(
+        `https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/reports?${queryParams.toString()}`
+      );
       const result = await response.json();
       
       if (result.success) {
@@ -26,32 +35,108 @@ const AdminPanel = () => {
     }
   };
 
-  // Fetch reports on component mount
   useEffect(() => {
     fetchReports();
   }, []);
 
+  // Filter and search functionality
+  const filteredReports = reports.filter(report => {
+    const matchesSearch = 
+      report.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      report.bill_number.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesStatus = 
+      filterStatus === 'all' || report.status === filterStatus;
+
+    return matchesSearch && matchesStatus;
+  });
+
+  // Calculate summary statistics
+  const totalAmount = filteredReports.reduce((sum, report) => sum + (report.amount || 0), 0);
+  const submittedCount = filteredReports.filter(report => report.status === 'submitted').length;
+
+  const handleGenerateReport = async () => {
+    if (!startDate || !endDate) {
+      setError('Please select both start and end dates');
+      return;
+    }
+    await fetchReports();
+  };
+
+  const handleExportCSV = () => {
+    const headers = ['Name', 'Date', 'Bill Number', 'Status', 'Created At', 'Amount'];
+    const csvContent = [
+      headers.join(','),
+      ...filteredReports.map(report => [
+        `${report.firstName} ${report.lastName}`,
+        report.date,
+        report.bill_number,
+        report.status,
+        new Date(report.created_at).toLocaleString(),
+        report.amount || '0'
+      ].join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `reports_${new Date().toISOString()}.csv`;
+    link.click();
+  };
+
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-gray-800">Admin Panel</h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold text-gray-800">Admin Panel</h2>
+          <button
+            onClick={handleExportCSV}
+            className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md"
+          >
+            Export CSV
+          </button>
+        </div>
         
         {/* Controls */}
         <div className="mb-6 bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <input
               type="date"
-              value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
-              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 px-4 py-2"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Start Date"
             />
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="End Date"
+            />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              placeholder="Search by name or bill number"
+            />
+            <select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+              className="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            >
+              <option value="all">All Status</option>
+              <option value="submitted">Submitted</option>
+              <option value="pending">Pending</option>
+            </select>
+          </div>
+          <div className="mt-4">
             <button
-              onClick={fetchReports}
+              onClick={handleGenerateReport}
               disabled={loading}
               className={`${
-                loading 
-                  ? 'bg-gray-400' 
-                  : 'bg-blue-500 hover:bg-blue-600'
+                loading ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'
               } text-white py-2 px-6 rounded-md transition duration-200 flex items-center`}
             >
               {loading ? (
@@ -75,6 +160,22 @@ const AdminPanel = () => {
           </div>
         )}
 
+        {/* Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Total Reports</h3>
+            <p className="text-2xl font-bold text-blue-600">{filteredReports.length}</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Submitted Reports</h3>
+            <p className="text-2xl font-bold text-green-600">{submittedCount}</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <h3 className="text-lg font-semibold text-gray-700">Total Amount</h3>
+            <p className="text-2xl font-bold text-purple-600">₹{totalAmount.toFixed(2)}</p>
+          </div>
+        </div>
+
         {/* Reports Table */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="overflow-x-auto">
@@ -85,15 +186,16 @@ const AdminPanel = () => {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bill Number</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {reports.length > 0 ? (
-                  reports.map((report) => (
+                {filteredReports.length > 0 ? (
+                  filteredReports.map((report) => (
                     <tr key={report._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{report.firstName}</div>
+                        <div className="text-sm text-gray-900">{`${report.firstName} ${report.lastName}`}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">{report.date}</div>
@@ -110,6 +212,9 @@ const AdminPanel = () => {
                           {report.status}
                         </span>
                       </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">₹{(report.amount || 0).toFixed(2)}</div>
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {new Date(report.created_at).toLocaleString()}
                       </td>
@@ -117,7 +222,7 @@ const AdminPanel = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="px-6 py-4 text-center text-gray-500">
+                    <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
                       No reports found
                     </td>
                   </tr>
@@ -125,11 +230,6 @@ const AdminPanel = () => {
               </tbody>
             </table>
           </div>
-        </div>
-
-        {/* Reports Summary */}
-        <div className="mt-4 text-right text-sm text-gray-600">
-          Total Reports: {reports.length}
         </div>
       </div>
     </div>
