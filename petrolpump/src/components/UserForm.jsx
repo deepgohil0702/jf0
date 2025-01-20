@@ -33,48 +33,48 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSubmitStatus({ success: false, message: '' });
 
     const data = new FormData();
-    Object.keys(formData).forEach(key => {
-      data.append(key, formData[key]);
-    });
+    data.append('firstName', formData.firstName);
+    data.append('lastName', formData.lastName);
+    data.append('mobileNumber', formData.mobileNumber);
+    data.append('email', formData.email);
+    data.append('date', formData.date);
+    data.append('billImage', formData.billImage);
 
     try {
-      const response = await fetch('https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/submit-bill', {
-        method: 'POST',
-        body: data,
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus({
-          success: true,
-          message: 'Bill submitted successfully!'
+        const response = await fetch('https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/submit-bill', {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json',
+                // Don't set Content-Type header when sending FormData
+            },
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        alert('Form submitted successfully!');
         // Reset form
         setFormData({
-          firstName: '',
-          lastName: '',
-          mobileNumber: '',
-          email: '',
-          date: '',
-          billImage: null
+            firstName: '',
+            lastName: '',
+            mobileNumber: '',
+            email: '',
+            date: '',
+            billImage: null
         });
         setPreview(null);
-      } else {
-        throw new Error(result.error || 'Failed to submit bill');
-      }
     } catch (error) {
-      setSubmitStatus({
-        success: false,
-        message: error.message
-      });
+        console.error('Error:', error);
+        alert('Failed to submit form');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
   return (
     <div className="min-h-screen bg-[#fae9e5] flex flex-col items-center py-8">
