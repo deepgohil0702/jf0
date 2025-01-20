@@ -45,7 +45,7 @@ const UserForm = () => {
     });
 
     try {
-      const response = await fetch('http://localhost:8000/api/submit-bill', {
+      const response = await fetch('https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/submit-bill', {
         method: 'POST',
         body: submitData
       });
