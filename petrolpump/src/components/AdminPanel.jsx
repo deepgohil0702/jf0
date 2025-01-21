@@ -12,7 +12,7 @@ const AdminPanel = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/all-data'
+          'https://ocrfreeapi.vercel.app/api/all-data'
         );
         const bills = response.data.data.bills;
         setData(bills);
