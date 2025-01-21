@@ -30,7 +30,7 @@ const UserForm = () => {
 
     try {
       const response = await axios.post(
-        'https://psychic-space-barnacle-g6v4jw5p57whwpvv-8000.app.github.dev/api/submit-bill',
+        'https://ocrfreeapi.vercel.app/api/submit-bill',
         formDataObj
       );
       alert(response.data.message);
