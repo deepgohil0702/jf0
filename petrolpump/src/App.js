@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserForm from './components/UserForm';
 import AdminPanel from './components/AdminPanel';
 import BillsList from './components/BillsList';
+import ImageUploader from './components/ImageUploader';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<UserForm />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/bill" element={<BillsList />} />
+        <Route path="/img" element={<ImageUploader />} />
       </Routes>
     </BrowserRouter>
   );

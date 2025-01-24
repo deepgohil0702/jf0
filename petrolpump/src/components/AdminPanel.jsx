@@ -12,7 +12,7 @@ const AdminPanel = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://ocrfreeapi.vercel.app/api/all-data'
+          'https://symmetrical-space-rotary-phone-9wg7r4qxxq427x44-8000.app.github.dev/api/all-data'
         );
         const bills = response.data.data.bills;
         setData(bills);
