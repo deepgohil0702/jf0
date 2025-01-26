@@ -1,6 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import AmazingPrizes from './AmazingPrizes';
+
+const gradientPresets = [
+  ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96c93d'],
+  ['#833ab4', '#fd1d1d', '#fcb045', '#405de6'],
+  ['#00b4d8', '#00f5d4', '#9b5de5', '#f15bb5'],
+  ['#ff9a9e', '#fad0c4', '#fad0c4', '#a18cd1'],
+  ['#30cfd0', '#330867', '#ff5858', '#ffc8dd'],
+  ['#43e97b', '#38f9d7', '#fa709a', '#fee140'],
+];
 
 const UserForm = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +21,22 @@ const UserForm = () => {
     date: '',
     billImage: null,
   });
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionData, setSubmissionData] = useState(null);
+  const [currentGradient, setCurrentGradient] = useState(gradientPresets[0]);
+
+  const getRandomGradient = () => {
+    const randomIndex = Math.floor(Math.random() * gradientPresets.length);
+    return gradientPresets[randomIndex];
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      setCurrentGradient(getRandomGradient());
+    }
+  }, [isLoading]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,8 +66,8 @@ const UserForm = () => {
           }
         }
       );
-      alert(response.data.message);
-      // Reset form after successful submission
+      
+      setSubmissionData(response.data.data);
       setFormData({
         firstName: '',
         lastName: '',
@@ -51,6 +76,7 @@ const UserForm = () => {
         date: '',
         billImage: null,
       });
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Submission error:', error);
       alert(`Submission failed! ${error.response?.data?.error || ''}`);
@@ -61,122 +87,179 @@ const UserForm = () => {
 
   return (
     <>
+      <style>
+        {`
+          @keyframes gradient {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          .animated-gradient {
+            background: linear-gradient(
+              -45deg, 
+              ${currentGradient[0]}, 
+              ${currentGradient[1]}, 
+              ${currentGradient[2]}, 
+              ${currentGradient[3]}
+            );
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 400px;
+          }
+        `}
+      </style>
+      
       <div className="min-h-screen flex items-center justify-center bg-[#fae9e5] p-4">
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
-        >
-          <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-            Submit Your Bill
-          </h1>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">First Name</label>
-            <input
-              name="firstName"
-              type="text"
-              value={formData.firstName}
-              onChange={handleInputChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
-            <input
-              name="lastName"
-              type="text"
-              value={formData.lastName}
-              onChange={handleInputChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Mobile Number</label>
-            <input
-              name="mobileNumber"
-              type="tel"
-              value={formData.mobileNumber}
-              onChange={handleInputChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              pattern="[0-9]{10}"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Date</label>
-            <input
-              name="date"
-              type="date"
-              value={formData.date}
-              onChange={handleInputChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Bill Image</label>
-            <input
-              name="billImage"
-              type="file"
-              onChange={handleFileChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              accept="image/*"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full transition-all duration-200 disabled:opacity-75 disabled:cursor-not-allowed relative"
+        {!isLoading && !isSubmitted && (
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
           >
-            {isLoading ? (
-              <div className="flex items-center justify-center">
-                <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
-                Submitting...
+            <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+              Submit Your Bill
+            </h1>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+              <input
+                name="firstName"
+                type="text"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+              <input
+                name="lastName"
+                type="text"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Mobile Number</label>
+              <input
+                name="mobileNumber"
+                type="tel"
+                value={formData.mobileNumber}
+                onChange={handleInputChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                pattern="[0-9]{10}"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+              <input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Date</label>
+              <input
+                name="date"
+                type="date"
+                value={formData.date}
+                onChange={handleInputChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-gray-700 text-sm font-bold mb-2">Bill Image</label>
+              <input
+                name="billImage"
+                type="file"
+                onChange={handleFileChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                accept="image/*"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full transition-all duration-200"
+            >
+              Submit
+            </button>
+          </form>
+        )}
+
+        {isLoading && (
+          <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg animated-gradient">
+            <div className="flex items-center justify-center h-full">
+              <p className="text-white font-bold text-xl animate-pulse">
+                Processing Your Submission...
+              </p>
+            </div>
+          </div>
+        )}
+
+        {isSubmitted && (
+          <div className="bg-white shadow-md rounded px-4 md:px-8 pt-6 pb-8 mb-4 w-full max-w-lg text-center">
+            <h2 className="text-xl md:text-2xl font-bold text-green-600 mb-3 md:mb-4">
+              <span className="inline-block mr-2">🎉</span>
+              Submission Successful!
+            </h2>
+            
+            <p className="text-gray-700 text-base md:text-lg mb-3 md:mb-4">
+              Thank you for participating! Your entry has been recorded.
+            </p>
+
+            {submissionData && (
+              <div className="mb-4 md:mb-6">
+                <p className="text-gray-700 mb-2 text-sm md:text-base">
+                  Your bill number: <span className="font-bold break-all">{submissionData.bill_number}</span>
+                </p>
+                <p className="text-gray-700 text-sm md:text-base">
+                  Your amount: <span className="font-bold">₹{submissionData.amount?.toFixed(2) || '0.00'}</span>
+                </p>
+                <p className="text-xs md:text-sm text-red-500 mt-1 md:mt-2">
+                  If this amount is incorrect, please contact admin
+                </p>
               </div>
-            ) : (
-              'Submit'
             )}
-          </button>
-        </form>
+
+            <div className="flex flex-col md:flex-row justify-center gap-4">
+            <button
+                onClick={() => {
+                  setIsSubmitted(false);
+                  navigate('/support');
+                }}
+               className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-all duration-200 text-sm md:text-base">
+    Contact Admin
+  </button>
+              <button
+                onClick={() => setIsSubmitted(false)}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-200 text-sm md:text-base"
+              >
+                Submit Another
+              </button>
+            </div>
+          </div>
+        )}
       </div>
       <AmazingPrizes />
     </>

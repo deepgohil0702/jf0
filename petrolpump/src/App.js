@@ -3,6 +3,7 @@ import UserForm from './components/UserForm';
 import AdminPanel from './components/AdminPanel';
 import BillsList from './components/BillsList';
 import ImageUploader from './components/ImageUploader';
+import ContactAdmin from './components/ContactAdmin';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/bill" element={<BillsList />} />
         <Route path="/img" element={<ImageUploader />} />
+        <Route path="/support" element={<ContactAdmin />} />
       </Routes>
     </BrowserRouter>
   );
