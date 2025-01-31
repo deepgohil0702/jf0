@@ -4,12 +4,7 @@ import axios from 'axios';
 import AmazingPrizes from './AmazingPrizes';
 
 const gradientPresets = [
-  ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96c93d'],
-  ['#833ab4', '#fd1d1d', '#fcb045', '#405de6'],
-  ['#00b4d8', '#00f5d4', '#9b5de5', '#f15bb5'],
-  ['#ff9a9e', '#fad0c4', '#fad0c4', '#a18cd1'],
-  ['#30cfd0', '#330867', '#ff5858', '#ffc8dd'],
-  ['#43e97b', '#38f9d7', '#fa709a', '#fee140'],
+  ['#ffffff', '#ffdd00', '#027cc5', '#ffdd00'],
 ];
 
 const UserForm = () => {
@@ -114,19 +109,34 @@ const UserForm = () => {
           }
         `}
       </style>
+      <div className="hidden md:block absolute top-4 left-4 z-10">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf/page1-872px-Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf.jpg"
+    alt="Bill Reference"
+    className="w-24 h-auto opacity-90 hover:opacity-100 transition-opacity" // Reduced from w-48 to w-24
+  />
+</div>
+
+{/* Mobile Image - Centered Top */}
+<div className="md:hidden w-full text-center pt-4">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf/page1-872px-Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf.jpg"
+    alt="Bill Reference"
+    className="mx-auto w-1/2 max-w-[120px] h-auto" // Reduced width and added max-width
+  />
+</div>
       
-      <div className="min-h-screen flex items-center justify-center bg-[#fae9e5] p-4">
+      <div className="min-h-screen flex items-center justify-center bg-[#ffffff] p-4">
         {!isLoading && !isSubmitted && (
           <form
             onSubmit={handleSubmit}
-            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
+            className="bg-[#ffdd00] shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
           >
-            <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-              Submit Your Bill
-            </h1>
-
+<h1 className="text-2xl font-bold mb-6 text-gray-800 text-center text-custom-blue">
+  Submit Your Bill
+</h1>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+              <label className="block text-custom-blue text-sm font-bold mb-2">First Name</label>
               <input
                 name="firstName"
                 type="text"
@@ -138,7 +148,7 @@ const UserForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+              <label className="block text-custom-blue text-sm font-bold mb-2">Last Name</label>
               <input
                 name="lastName"
                 type="text"
@@ -150,7 +160,7 @@ const UserForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Mobile Number</label>
+              <label className="block text-custom-blue text-sm font-bold mb-2">Mobile Number</label>
               <input
                 name="mobileNumber"
                 type="tel"
@@ -163,7 +173,7 @@ const UserForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+              <label className="block text-custom-blue text-sm font-bold mb-2">Email</label>
               <input
                 name="email"
                 type="email"
@@ -175,7 +185,7 @@ const UserForm = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Date</label>
+              <label className="block text-custom-blue text-sm font-bold mb-2">Date</label>
               <input
                 name="date"
                 type="date"

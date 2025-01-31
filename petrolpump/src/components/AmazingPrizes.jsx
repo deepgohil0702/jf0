@@ -40,7 +40,7 @@ const AmazingPrizes = () => {
   }
 
   return (
-    <div className="bg-[#fae9e5] flex flex-col items-center p-6">
+    <div className="bg-[#ffffff] flex flex-col items-center p-6">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4" style={{ fontFamily: 'Arial Bold, sans-serif' }}>
@@ -56,7 +56,7 @@ const AmazingPrizes = () => {
         {prizes.map((prize, index) => (
           <div
             key={index}
-            className="border-2 border-black p-4 flex flex-col items-center"
+            className="border-2 border-[#ffdd00] p-4 flex flex-col items-center"
           >
             <img
               src={prize.imgSrc}
