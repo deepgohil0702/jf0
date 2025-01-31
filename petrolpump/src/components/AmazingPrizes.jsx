@@ -10,7 +10,7 @@ const AmazingPrizes = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://symmetrical-space-rotary-phone-9wg7r4qxxq427x44-8000.app.github.dev/api/latest-images'
+          'https://backendpetrol.vercel.app/api/latest-images'
         );
         
         if (response.data.success && response.data.data.images) {

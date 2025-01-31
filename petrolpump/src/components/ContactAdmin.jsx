@@ -34,7 +34,7 @@ const ContactAdmin = () => {
         
         try {
             const response = await axios.post(
-                'https://symmetrical-space-rotary-phone-9wg7r4qxxq427x44-8000.app.github.dev/api/contact-admin',
+                'https://backendpetrol.vercel.app/api/contact-admin',
                 {
                     phone_number: formData.phoneNumber,
                     query: formData.query

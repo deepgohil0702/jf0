@@ -19,7 +19,7 @@ const UserForm = () => {
     mobileNumber: '',
     email: '',
     date: '',
-    billImage: null,
+    image: null,
   });
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +44,7 @@ const UserForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, billImage: e.target.files[0] });
+    setFormData({ ...formData, image: e.target.files[0] });
   };
 
   const handleSubmit = async (e) => {
@@ -58,7 +58,7 @@ const UserForm = () => {
 
     try {
       const response = await axios.post(
-        'https://symmetrical-space-rotary-phone-9wg7r4qxxq427x44-8000.app.github.dev/api/submit-bill',
+        'https://ocrcodesimpleonlyocr.vercel.app/ocr/',
         formDataObj,
         {
           headers: {
@@ -74,7 +74,7 @@ const UserForm = () => {
         mobileNumber: '',
         email: '',
         date: '',
-        billImage: null,
+        image: null,
       });
       setIsSubmitted(true);
     } catch (error) {
@@ -189,7 +189,7 @@ const UserForm = () => {
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-bold mb-2">Bill Image</label>
               <input
-                name="billImage"
+                name="image"
                 type="file"
                 onChange={handleFileChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"

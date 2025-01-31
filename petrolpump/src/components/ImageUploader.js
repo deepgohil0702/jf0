@@ -28,7 +28,7 @@ export default function ImageUploader() {
     });
 
     try {
-      const response = await fetch('https://symmetrical-space-rotary-phone-9wg7r4qxxq427x44-8000.app.github.dev/api/submit-images', {
+      const response = await fetch('https://backendpetrol.vercel.app/api/submit-images', {
         method: 'POST',
         body: formData,
       });
