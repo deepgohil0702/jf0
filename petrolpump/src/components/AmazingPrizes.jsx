@@ -56,7 +56,7 @@ const AmazingPrizes = () => {
         {prizes.map((prize, index) => (
           <div
             key={index}
-            className="border-2 border-[#ffdd00] p-4 flex flex-col items-center"
+            className="border-2 border-[#cc0113] p-4 flex flex-col items-center"
           >
             <img
               src={prize.imgSrc}
@@ -72,7 +72,7 @@ const AmazingPrizes = () => {
               >
                 {prize.description}
               </p>
-              <p className="text-lg font-bold text-blue-600">
+              <p className="text-lg font-bold text-[#010269]">
                 ₹{prize.amount.toLocaleString()}
               </p>
             </div>
@@ -83,10 +83,10 @@ const AmazingPrizes = () => {
       {/* Footer */}
       <div className="mt-8 text-center">
         <p
-          className="text-xl text-blue-600 font-semibold"
+          className="text-xl text-[#cc0113] font-semibold"
           style={{ fontFamily: 'Arial Bold, sans-serif' }}
         >
-          <i className="fas fa-star text-purple-500"></i> and many more...
+          <i className="fas fa-star text-[#cc0113]"></i> and many more...
         </p>
       </div>
     </div>

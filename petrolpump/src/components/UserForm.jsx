@@ -4,7 +4,7 @@ import axios from 'axios';
 import AmazingPrizes from './AmazingPrizes';
 
 const gradientPresets = [
-  ['#ffffff', '#ffdd00', '#027cc5', '#ffdd00'],
+  ['#cc0113', '#cf1122', '#111272', '#ededf4'],
 ];
 
 const UserForm = () => {
@@ -111,7 +111,7 @@ const UserForm = () => {
       </style>
       <div className="hidden md:block absolute top-4 left-4 z-10">
   <img
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf/page1-872px-Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf.jpg"
+    src="https://companieslogo.com/img/orig/HINDPETRO.NS-6dfea446.png"
     alt="Bill Reference"
     className="w-24 h-auto opacity-90 hover:opacity-100 transition-opacity" // Reduced from w-48 to w-24
   />
@@ -120,7 +120,7 @@ const UserForm = () => {
 {/* Mobile Image - Centered Top */}
 <div className="md:hidden w-full text-center pt-4">
   <img
-    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf/page1-872px-Official_BPCL_LOGO_with_tagline_Energising_Lives.pdf.jpg"
+    src="https://companieslogo.com/img/orig/HINDPETRO.NS-6dfea446.png"
     alt="Bill Reference"
     className="mx-auto w-1/2 max-w-[120px] h-auto" // Reduced width and added max-width
   />
@@ -130,9 +130,9 @@ const UserForm = () => {
         {!isLoading && !isSubmitted && (
           <form
             onSubmit={handleSubmit}
-            className="bg-[#ffdd00] shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
+            className="bg-[#cc0113] shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-lg"
           >
-<h1 className="text-2xl font-bold mb-6 text-gray-800 text-center text-custom-blue">
+<h1 className="text-2xl font-bold mb-6 text-[#ffffff] text-center text-custom-blue">
   Submit Your Bill
 </h1>
             <div className="mb-4">
@@ -197,7 +197,7 @@ const UserForm = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Bill Image</label>
+              <label className="block text-[#ffffff] text-sm font-bold mb-2">Bill Image</label>
               <input
                 name="image"
                 type="file"
@@ -210,7 +210,7 @@ const UserForm = () => {
 
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full transition-all duration-200"
+              className="bg-[#010269] hover:bg-[#111272] text-white font-bold py-2 px-4 rounded w-full transition-all duration-200"
             >
               Submit
             </button>
@@ -258,12 +258,12 @@ const UserForm = () => {
                   setIsSubmitted(false);
                   navigate('/support');
                 }}
-               className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-all duration-200 text-sm md:text-base">
+               className="bg-[#cc0113] hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition-all duration-200 text-sm md:text-base">
     Contact Admin
   </button>
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-200 text-sm md:text-base"
+                className="bg-[#010269] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all duration-200 text-sm md:text-base"
               >
                 Submit Another
               </button>

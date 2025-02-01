@@ -53,12 +53,25 @@ const ContactAdmin = () => {
         }
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('support_authenticated');
+        window.location.href = '/support-login';
+    };
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-                    Contact Admin
-                </h2>
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-2xl font-bold text-gray-800">
+                        Contact Admin
+                    </h2>
+                    <button
+                        onClick={handleLogout}
+                        className="text-sm text-red-600 hover:text-red-800"
+                    >
+                        Logout
+                    </button>
+                </div>
+
                 
                 {submitSuccess && (
                     <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
