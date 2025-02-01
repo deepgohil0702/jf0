@@ -6,12 +6,14 @@ import ImageUploader from './components/ImageUploader';
 import ContactAdmin from './components/ContactAdmin';
 import SupportLogin from './components/SupportLogin';
 import ProtectedRoute from './components/ProtectedRoute';
+import Winner from './components/Winner';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<UserForm />} />
+        <Route path="/winner" element={<Winner />} />
         <Route path="/admin-login" element={<SupportLogin />} />
         <Route 
           path="/admin" 
