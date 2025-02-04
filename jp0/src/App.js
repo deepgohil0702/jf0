@@ -54,7 +54,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div className="min-h-screen bg-[#0f304d] from-slate-900 to-slate-800 text-white">
       {/* Scroll progress indicator */}
       <motion.div
         className="fixed top-0 left-0 h-1 bg-blue-500 z-50"
