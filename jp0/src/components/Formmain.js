@@ -1,7 +1,10 @@
 import { MoveDown, twitter } from "lucide-react";
+import ClaudeLanding from './ClaudeLanding';
 
-export default function Formmain() {
+
+const Formmain = () =>  {
   return (
+    <>
     <div className="bg-[#fdfaf4] text-[#333] min-h-screen flex flex-col lg:flex-row">
       {/* Left Section */}
       <div className="w-full lg:w-1/2 flex-1 flex items-center justify-center p-6 lg:p-12">
@@ -89,5 +92,7 @@ export default function Formmain() {
         </div>
       </div>
     </div>
+    </>
   );
 }
+export default Formmain;

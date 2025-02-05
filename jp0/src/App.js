@@ -1,4 +1,5 @@
 import ClaudeLanding from './components/ClaudeLanding';
+import ClaudeLandingm from './components/ClaudeLandingm';
 import Formmain from './components/Formmain';
 import Pricing from './components/Pricing';
 import Faq from './components/Faq';
@@ -8,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ClaudeLanding />} />
+        <Route path="/" element={<ClaudeLandingm />} />
         <Route path="/form" element={<Formmain />} />
         <Route path="/price" element={<Pricing />} />
         <Route path="/Faq" element={<Faq />} />
