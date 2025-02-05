@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        geist: ['Geist Sans', 'sans-serif'],
       },
     },
   },

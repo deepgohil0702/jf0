@@ -1,8 +1,8 @@
-import { ChevronDown, twitter } from "lucide-react";
+import { MoveDown, twitter } from "lucide-react";
 
 export default function App() {
   return (
-    <div className="bg-[#fdfaf4] text-[#333] min-h-screen flex">
+    <div className="bg-[#fdfaf4] text-[#333] min-h-screen flex flex-col lg:flex-row">
       {/* Left Section */}
       <div className="w-full lg:w-1/2 flex-1 flex items-center justify-center p-6 lg:p-12">
         <div className="max-w-md w-full flex flex-col items-center">
@@ -12,30 +12,38 @@ export default function App() {
             className="mb-4 w-[50px] h-[50px]"
           />
           
-          <h1 className="text-4xl lg:text-5xl font-bold text-center mb-4">
-            Your ideas, amplified
+          <h1 className="text-4xl lg:text-5xl font-geist font-bold text-center mb-4">
+            Your ideas amplified
           </h1>
           
-          <p className="text-lg text-center mb-8">
+          <p className="text-lg text-center mb-8 font-geist">
             Privacy-first AI that helps you create in confidence.
           </p>
 
           {/* Auth Card */}
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full">
-            <button className="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex items-center justify-center mb-4">
+          <div className="bg-[#faf9f5] p-8 rounded-3xl shadow-lg w-full border border-[#e5e5e5]">
+            {/* <button className="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex items-center justify-center mb-4">
               <twitter className="w-5 h-5 mr-2" />
               Continue with Google
-            </button>
-            
-            <div className="text-center text-gray-500 mb-4">OR</div>
+            </button> */}
+{/*             
+            <div className="text-center text-gray-500 mb-4">OR</div> */}
             
             <input
               type="email"
-              placeholder="Enter your personal or work email"
+              placeholder="Enter your personal email"
               className="w-full border border-gray-300 py-2 px-4 rounded-lg mb-4"
             />
-            
-            <button className="w-full bg-[#e05a33] text-white py-2 px-4 rounded-lg">
+            <input
+              type="text"
+              placeholder="Enter your auth code"
+              className="w-full border border-gray-300 py-2 px-4 rounded-lg mb-4"
+            />
+            <input
+              type="file"
+              className="w-full border border-gray-300 py-2 px-4 rounded-lg mb-4"
+            />
+            <button className="w-full bg-[#c96442] text-white py-2 px-4 rounded-lg">
               Continue with email
             </button>
             
@@ -47,16 +55,16 @@ export default function App() {
             </p>
           </div>
 
-          <button className="mt-8 bg-[#f5f0e8] text-[#333] py-2 px-6 rounded-full flex items-center">
+          <button className="mt-8 bg-gradient-to-r from-[#f0eee5] to-[#e8e5d8] text-lg text-[#333] py-2 px-6 rounded-full flex items-center border border-[#e5e5e5] hover:text-[#29261b]">
             Learn more
-            <ChevronDown className="ml-2 w-4 h-4" />
+            <MoveDown className="ml-2 w-4 h-4" />
           </button>
         </div>
       </div>
 
       {/* Right Section */}
-      <div className="w-full lg:w-1/2 flex-1 flex items-center justify-center p-6 lg:p-12">
-        <div className="max-w-md w-full bg-[#f0eee6] p-6 rounded-lg shadow-lg">
+      <div className="m-3 w-full bg-[#f0eee6] lg:w-1/2 flex-1 flex items-center justify-center p-6 lg:p-12 rounded-[12px]">
+        <div className="max-w-md w-full bg-[#f5f0e8] p-6 rounded-lg shadow-lg">
           <div className="flex items-center mb-4">
             <img
               src="https://storage.googleapis.com/a1aa/image/Gh2lcRaJYnbCT8lFi-Eysr-4eT-dSjHFCA5o7zNbDMA.jpg"
