@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MessageSquare, FileText, Users, Check, Plus, X } from 'lucide-react';
-import Formmain from './Formmain';
+
 // Scroll Progress Bar Component
 const ScrollProgress = () => {
   const [progress, setProgress] = useState(0);
@@ -15,7 +15,6 @@ const ScrollProgress = () => {
     window.addEventListener('scroll', updateScrollProgress);
     return () => window.removeEventListener('scroll', updateScrollProgress);
   }, []);
-
 
   return (
     <div className="fixed top-0 left-0 h-1 w-full bg-gray-200 z-50">
@@ -92,28 +91,8 @@ const FAQItem = ({ question, answer, isOpen, onToggle }) => (
 
 // Main Landing Page Component
 const ClaudeLanding = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const [openFAQ, setOpenFAQ] = useState(null);
-  const footerLinks = {
-    column1: [
-      { text: 'Product', href: '#' },
-      { text: 'Research', href: '#' },
-      { text: 'Careers', href: '#' },
-      { text: 'Company', href: '#' },
-      { text: 'News', href: '#' },
-    ],
-    column2: [
-      { text: 'Terms of Service', href: '#' },
-      { text: 'Privacy Policy', href: '#' },
-      { text: 'Your Privacy Choices', href: '#' },
-      { text: 'Responsible Disclosure Policy', href: '#' },
-      { text: 'Compliance', href: '#' },
-    ],
-  };
+
   const faqData = [
     {
       id: 'what',
@@ -144,46 +123,27 @@ const ClaudeLanding = () => {
   ];
 
   return (
-    <>
     <div className="relative">
-      
       <ScrollProgress />
 
       {/* Navigation */}
-      <nav className="w-full px-4 py-8 fixed top-0 left-0 right-0 bg-white z-40">
-      <div className="flex justify-between items-center max-w-6xl mx-auto">
-        <div className="flex items-center space-x-2">
-          <div className="text-orange-600 text-2xl">✴</div>
-          <span className="text-2xl font-semibold">Claude</span>
+      <nav className="max-w-6xl mx-auto px-4 py-8 fixed top-0 left-0 right-0 bg-white z-40">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="text-orange-600 text-2xl">✴</div>
+            <span className="text-xl font-semibold">Claude</span>
+          </div>
+          <div className="flex items-center space-x-6">
+            <a href="#features" className="text-gray-600 hover:text-gray-900">Features</a>
+            <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
+            <a href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</a>
+            <button className="bg-orange-700 hover:bg-orange-800 px-4 py-2 rounded-md text-white transition-colors">
+              Get Started
+            </button>
+          </div>
         </div>
-        <div className="hidden md:flex items-center space-x-6">
-        <a href="#features" className="text-lg text-gray-600 hover:text-gray-900">Features</a>
-        <a href="#pricing" className="text-lg text-gray-600 hover:text-gray-900">Pricing</a>
-        <a href="#faq" className="text-lg text-gray-600 hover:text-gray-900">FAQ</a>
+      </nav>
 
-          <button className="bg-orange-700 hover:bg-orange-800 px-4 py-2 rounded-md text-white transition-colors">
-            Get Started
-          </button>
-        </div>
-        <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-gray-600 focus:outline-none">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      {isMenuOpen && (
-        <div className="md:hidden flex flex-col space-y-4 mt-4">
-          <a href="#features" className="text-gray-600 hover:text-gray-900">Features</a>
-          <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
-          <a href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</a>
-          <button className="bg-orange-700 hover:bg-orange-800 px-4 py-2 rounded-md text-white transition-colors">
-            Get Started
-          </button>
-        </div>
-      )}
-    </nav>
       {/* Main Content Sections */}
       <div className="pt-32">
         {/* Hero Section */}
@@ -259,7 +219,37 @@ const ClaudeLanding = () => {
           ]}
         />
 
-      
+        {/* Team Plan */}
+        <PricingCard
+          title="Team"
+          subtitle="For fast-growing teams"
+          price="25"
+          period="Per person / month with annual subscription"
+          monthly="$30 if billed monthly. Minimum 5 members."
+          features={[
+            "Everything in Pro, plus:",
+            "More usage than Pro",
+            "Central billing and administration",
+            "Early access to collaboration features"
+          ]}
+        />
+
+        {/* Enterprise Plan */}
+        <PricingCard
+          title="Enterprise"
+          subtitle="For businesses operating at scale"
+          features={[
+            "Everything in Team, plus:",
+            "More usage than Team",
+            "Expanded context window",
+            "Single sign-on (SSO) and domain capture",
+            "Role-based access with fine grained permissioning",
+            "System for Cross-domain Identity Management (SCIM)",
+            "Audit logs",
+            "Data source integrations"
+          ]}
+          cta="Contact sales"
+        />
             </div>
           </div>
         </section>
@@ -282,7 +272,7 @@ const ClaudeLanding = () => {
 
         {/* Footer */}
         <footer className="bg-black text-gray-400 py-8">
-      <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo Column */}
           <div className="flex items-start">
@@ -341,7 +331,7 @@ const ClaudeLanding = () => {
           </p>
         </div>
       </div>
-    </footer>
+        </footer>
       </div>
 
       <style jsx global>{`
@@ -359,7 +349,6 @@ const ClaudeLanding = () => {
         }
       `}</style>
     </div>
-    </>
   );
 };
 
