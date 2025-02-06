@@ -55,7 +55,7 @@ We believe in making accounting more approachable and user-friendly through thou
         <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
           <div className="max-w-md w-full flex flex-col items-center">
             <img 
-              src="https://storage.googleapis.com/a1aa/image/KS7haObHQoANSGci-Q6cB7BpmiYCZDTYvGf4CjKyUFc.jpg" 
+              src="https://res.cloudinary.com/dbhqlneyn/image/upload/v1738833674/Group_7_flgwcg.jpg" 
               alt="Claude logo" 
               className="mb-4 w-[50px] h-[50px]"
             />
