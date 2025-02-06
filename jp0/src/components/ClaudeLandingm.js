@@ -73,7 +73,7 @@ const ClaudeLandingm = () => {
 </svg>
 
   </div>
-  <span className="text-2xl font-semibold">Claude</span>
+  <span className="text-2xl font-semibold">Jowb</span>
 </div>
         <div className="hidden md:flex items-center space-x-6">
         <a href="#features" className="text-lg text-gray-600 hover:text-gray-900">Features</a>
