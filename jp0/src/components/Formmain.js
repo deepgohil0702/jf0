@@ -50,7 +50,7 @@ We believe in making accounting more approachable and user-friendly through thou
         }
       `}</style>
       
-      <div className="bg-[#fdfaf4] text-[#333] min-h-screen flex flex-col lg:flex-row">
+      <div className="bg-background text-[#333] min-h-screen flex flex-col lg:flex-row">
         {/* Left Section */}
         <div className="w-full lg:w-1/2 flex items-center justify-center p-6 lg:p-12">
           <div className="max-w-md w-full flex flex-col items-center">
@@ -81,7 +81,7 @@ We believe in making accounting more approachable and user-friendly through thou
                 type="file"
                 className="w-full border border-gray-300 py-2 px-4 rounded-lg mb-4"
               />
-              <button className="w-full bg-[#c96442] text-white py-2 px-4 rounded-lg">
+              <button className="w-full bg-buttoncolour text-white py-2 px-4 rounded-lg">
                 Continue with email
               </button>
               <p className="text-xs text-gray-500 text-center mt-4">
@@ -99,7 +99,7 @@ We believe in making accounting more approachable and user-friendly through thou
         </div>
 
         {/* Right Section */}
-        <div className="m-3 w-full bg-[#f0eee6] lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-12 rounded-[12px]">
+        <div className="m-3 w-full bg-darkbackground lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-12 rounded-[12px]">
           <div className="max-w-md w-full bg-white p-4 sm:p-6 rounded-lg shadow-md">
             {/* Header Section */}
             <div className="flex flex-wrap sm:flex-nowrap items-start sm:items-center mb-4 gap-2 sm:gap-0">
