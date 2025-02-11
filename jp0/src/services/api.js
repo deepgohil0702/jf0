@@ -2,7 +2,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://psychic-space-b
 
 export const submitBill = async (formData) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/submit-bill`, {
+    const response = await fetch(`₹{API_BASE_URL}/api/submit-bill`, {
       method: 'POST',
       body: formData,
       credentials: 'include',
@@ -13,7 +13,7 @@ export const submitBill = async (formData) => {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP error! status: ₹{response.status}`);
     }
 
     const data = await response.json();
@@ -26,12 +26,12 @@ export const submitBill = async (formData) => {
 
 export const getBills = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/bills`, {
+    const response = await fetch(`₹{API_BASE_URL}/api/bills`, {
       credentials: 'include',
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP error! status: ₹{response.status}`);
     }
 
     const data = await response.json();

@@ -30,11 +30,19 @@ const TextRevealAnimation = ({ text }) => {
 };
 
 const Formmain = () =>  {
-  const relevantContext = `Settings Options As part of the design of an accounting platform, our team created these emails to keep users informed about their new invoices, payment confirmations, and task statuses.
+  const relevantContext = `Hiring for Data Analyst
 
-To add a touch of personality to the emails, we created a custom set of hand-drawn illustrations.
+Location - Bangalore
+Work from office - 2days/week
+Full time - permeant position
 
-We believe in making accounting more approachable and user-friendly through thoughtful design.`;
+Required skills - - Python - SQL - SAS - Excel - Pyspark - Exposure to Bigdata and Hadoop data lake is a big plus - Knowledge of cloud platforms like GCP, Azure, AWS is a big plus 
+
+Preety Lamsal 
+
+eMail   : Preety.Lamsal@myaliket.com
+
+Mobile  : + 91-8104680835 `;
 
   return (
     <>
@@ -60,10 +68,10 @@ We believe in making accounting more approachable and user-friendly through thou
               className="mb-4 w-[50px] h-[50px]"
             />
             <h1 className="text-4xl lg:text-5xl font-geist font-bold text-center mb-4">
-              Your ideas amplified
+            Your Career, Accelerated
             </h1>
-            <p className="text-lg text-center mb-8 font-geist">
-              Privacy-first AI that helps you create in confidence.
+            <p className="text-s text-center mb-8 font-geist">
+            AI that automates your job applications from resume parsing to personalized email submissions so you can focus on preparing for interviews.
             </p>
             {/* Auth Card */}
             <div className="bg-[#faf9f5] p-8 rounded-3xl shadow-lg w-full border border-[#e5e5e5]">
@@ -85,7 +93,7 @@ We believe in making accounting more approachable and user-friendly through thou
                 Continue with email
               </button>
               <p className="text-xs text-gray-500 text-center mt-4">
-                By continuing, you agree to Anthropic's{" "}
+                By continuing, you agree to Jowb's{" "}
                 <a href="#" className="underline">Consumer Terms and Usage Policy</a>,{" "}
                 and acknowledge their{" "}
                 <a href="#" className="underline">Privacy Policy</a>.
@@ -99,8 +107,8 @@ We believe in making accounting more approachable and user-friendly through thou
         </div>
 
         {/* Right Section */}
-        <div className="m-3 w-full bg-darkbackground lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-12 rounded-[12px]">
-          <div className="max-w-md w-full bg-white p-4 sm:p-6 rounded-lg shadow-md">
+        <div className="mx-0 my-2 lg:m-3 w-full bg-darkbackground lg:w-1/2 flex items-center justify-center p-4 sm:p-6 lg:p-12 rounded-[12px]">
+        <div className="max-w-md w-full bg-white p-3 sm:p-4 lg:p-6 rounded-lg shadow-md">
             {/* Header Section */}
             <div className="flex flex-wrap sm:flex-nowrap items-start sm:items-center mb-4 gap-2 sm:gap-0">
               <img
@@ -110,11 +118,11 @@ We believe in making accounting more approachable and user-friendly through thou
               />
               <div className="flex-1 min-w-0">
                 <h2 className="font-semibold text-sm sm:text-base">
-                  Relevant Context
+                  Preety Lamsal
                   <span className="text-gray-500"> • Design</span>
                 </h2>
                 <p className="text-gray-500 text-xs sm:text-sm truncate">
-                  UX/UI Designer
+                Sr.HR Executive
                   <span className="text-blue-500">💡</span> Product Design
                 </p>
                 <p className="text-gray-500 text-xs sm:text-sm">

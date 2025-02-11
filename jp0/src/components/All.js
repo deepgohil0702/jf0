@@ -20,7 +20,7 @@ const ScrollProgress = () => {
     <div className="fixed top-0 left-0 h-1 w-full bg-gray-200 z-50">
       <div 
         className="h-full bg-orange-600 transition-all duration-300" 
-        style={{ width: `${progress}%` }}
+        style={{ width: `₹{progress}%` }}
       />
     </div>
   );
@@ -35,7 +35,7 @@ const PricingCard = ({ title, subtitle, price, period, features, cta, monthly })
         <p className="text-gray-600 mb-4">{subtitle}</p>
         
         <div className="mb-4">
-          <span className="text-3xl font-semibold">${price}</span>
+          <span className="text-3xl font-semibold">₹{price}</span>
           {period && <span className="text-gray-600 text-sm ml-2">{period}</span>}
         </div>
         
@@ -97,7 +97,7 @@ const ClaudeLanding = () => {
     {
       id: 'what',
       question: 'What is Claude and how does it work?',
-      answer: 'Claude is a next-generation AI assistant built by Anthropic, designed to help with a wide range of tasks while being safe, accurate, and secure.'
+      answer: 'Claude is a next-generation AI assistant built by Jowb, designed to help with a wide range of tasks while being safe, accurate, and secure.'
     },
     {
       id: 'use',
@@ -149,10 +149,9 @@ const ClaudeLanding = () => {
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-8 mb-16">
           <div className="text-center">
-            <h1 className="text-4xl font-serif mb-4">Meet Claude</h1>
+            <h1 className="text-4xl font-serif mb-4">Let AI Do The Work</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Claude is a next generation AI assistant built by Anthropic and trained to
-              be safe, accurate, and secure to help you do your best work.
+              Jowb is an innovative AI-powered job search platform designed to streamline and automate the job hunting process. Built with advanced AI agents, it eliminates the need for manual multi-platform applications
             </p>
           </div>
         </section>
@@ -209,7 +208,7 @@ const ClaudeLanding = () => {
           subtitle="For Claude power users"
           price="18"
           period="Per month with annual subscription"
-          monthly="$216 billed up front. $20 if billed monthly."
+          monthly="₹216 billed up front. ₹20 if billed monthly."
           features={[
             "Everything in Free, plus:",
             "More usage than Free",
@@ -225,7 +224,7 @@ const ClaudeLanding = () => {
           subtitle="For fast-growing teams"
           price="25"
           period="Per person / month with annual subscription"
-          monthly="$30 if billed monthly. Minimum 5 members."
+          monthly="₹30 if billed monthly. Minimum 5 members."
           features={[
             "Everything in Pro, plus:",
             "More usage than Pro",

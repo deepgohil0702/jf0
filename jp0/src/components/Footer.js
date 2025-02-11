@@ -11,10 +11,6 @@ const Footer = () => {
     ],
     column2: [
       { text: 'Terms of Service', href: '#' },
-      { text: 'Privacy Policy', href: '#' },
-      { text: 'Your Privacy Choices', href: '#' },
-      { text: 'Responsible Disclosure Policy', href: '#' },
-      { text: 'Compliance', href: '#' },
     ],
   };
 
@@ -25,7 +21,7 @@ const Footer = () => {
           {/* Logo Column */}
           <div className="flex items-start">
             <a href="/" className="text-white text-2xl font-bold">
-              AI
+              Jowb
             </a>
           </div>
 

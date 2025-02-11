@@ -36,7 +36,7 @@ const FAQ = () => {
     {
       id: 'what',
       question: 'What is Claude and how does it work?',
-      answer: 'Claude is a next-generation AI assistant built by Anthropic, designed to help with a wide range of tasks while being safe, accurate, and secure.'
+      answer: 'Claude is a next-generation AI assistant built by Jowb, designed to help with a wide range of tasks while being safe, accurate, and secure.'
     },
     {
       id: 'use',

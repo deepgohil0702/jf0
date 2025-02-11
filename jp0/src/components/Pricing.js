@@ -8,7 +8,7 @@ const PricingCard = ({ title, subtitle, price, period, features, cta, monthly })
       <p className="text-gray-600 mb-4">{subtitle}</p>
       
       <div className="mb-4">
-        <span className="text-3xl font-semibold">${price}</span>
+        <span className="text-3xl font-semibold">₹{price}</span>
         {period && <span className="text-gray-600 text-sm ml-2">{period}</span>}
       </div>
       
@@ -59,7 +59,7 @@ const Pricing = () => {
           subtitle="For Claude power users"
           price="18"
           period="Per month with annual subscription"
-          monthly="$216 billed up front. $20 if billed monthly."
+          monthly="₹216 billed up front. ₹20 if billed monthly."
           features={[
             "Everything in Free, plus:",
             "More usage than Free",
@@ -75,7 +75,7 @@ const Pricing = () => {
           subtitle="For fast-growing teams"
           price="25"
           period="Per person / month with annual subscription"
-          monthly="$30 if billed monthly. Minimum 5 members."
+          monthly="₹30 if billed monthly. Minimum 5 members."
           features={[
             "Everything in Pro, plus:",
             "More usage than Pro",

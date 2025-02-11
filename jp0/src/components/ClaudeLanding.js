@@ -36,7 +36,7 @@ const PricingCard = ({ title, subtitle, price, period, features, cta, monthly })
         <p className="text-gray-600 mb-4">{subtitle}</p>
         
         <div className="mb-4">
-          <span className="text-3xl font-semibold">${price}</span>
+          <span className="text-3xl font-semibold">₹{price}</span>
           {period && <span className="text-gray-600 text-sm ml-2">{period}</span>}
         </div>
         
@@ -101,47 +101,42 @@ const ClaudeLanding = () => {
   const footerLinks = {
     column1: [
       { text: 'Product', href: '#' },
-      { text: 'Research', href: '#' },
-      { text: 'Careers', href: '#' },
-      { text: 'Company', href: '#' },
-      { text: 'News', href: '#' },
+      { text: 'Research', href: '#' }
     ],
     column2: [
       { text: 'Terms of Service', href: '#' },
-      { text: 'Privacy Policy', href: '#' },
-      { text: 'Your Privacy Choices', href: '#' },
-      { text: 'Responsible Disclosure Policy', href: '#' },
-      { text: 'Compliance', href: '#' },
+
     ],
   };
-  const faqData = [
-    {
-      id: 'what',
-      question: 'What is Claude and how does it work?',
-      answer: 'Claude is a next-generation AI assistant built by Anthropic, designed to help with a wide range of tasks while being safe, accurate, and secure.'
-    },
-    {
-      id: 'use',
-      question: 'What should I use Claude for?',
-      answer: 'Claude can assist with various tasks including writing, analysis, coding, math, and general discussion. Its designed to be a versatile assistant that can help with both simple and complex tasks.'
-    },
-    {
-      id: 'cost',
-      question: 'How much does it cost to use?',
-      answer: (
-        <div>
-          <p>
-            Claude has four pricing plans available — Free, Pro, Team, and Enterprise. The
-            Free plan offers limited use with no payment required.{' '}
-            <a href="#pricing" className="text-gray-900 underline hover:no-underline">
-              Learn more about Pro and Team pricing
-            </a>
-            .
-          </p>
-        </div>
-      )
-    }
-  ];
+const faqData = [
+  {
+    id: 'what',
+    question: 'What is this automated job application platform and how does it work?',
+    answer:
+      'Our platform is an AI-powered solution that completely automates the job application process. Simply upload your resume and provide your email credentials, and our system will parse your resume, generate personalized application emails, and submit applications to multiple companies on your behalf.'
+  },
+  {
+    id: 'setup',
+    question: 'What do I need to get started?',
+    answer:
+      'Getting started is easy! All you need is your updated resume and your email login credentials. Once you provide these, our AI takes over—handling resume parsing, custom email creation, and application submissions—so you can focus on preparing for interviews.'
+  },
+  {
+    id: 'cost',
+    question: 'How much does it cost to use this platform?',
+    answer: (
+      <div>
+        <p>
+          We offer a range of pricing plans to suit different needs, including a free plan with essential features and premium plans for advanced functionality.{' '}
+          <a href="#pricing" className="text-gray-900 underline hover:no-underline">
+            Learn more about our pricing options
+          </a>
+          .
+        </p>
+      </div>
+    )
+  }
+];
 
   return (
     <>
@@ -155,43 +150,49 @@ const ClaudeLanding = () => {
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-4 py-8 mb-16">
           <div className="text-center">
-            <h1 className="text-4xl font-serif mb-4">Meet Claude</h1>
+            <h1 className="text-4xl font-serif mb-4">Let AI Do The Work</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Claude is a next generation AI assistant built by Anthropic and trained to
-              be safe, accurate, and secure to help you do your best work.
+              Jowb is an innovative AI-powered job search platform designed to streamline and automate the job hunting process. Built with advanced AI agents, it eliminates the need for manual multi-platform applications
             </p>
           </div>
         </section>
 
-        {/* Features Section */}
         <section id="features" className="max-w-6xl mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                      <div className="space-y-4">
-                        <div className="flex items-center space-x-3">
-                          <MessageSquare className="h-6 w-6" />
-                          <h2 className="text-2xl font-serif">Create with Claude</h2>
-                        </div>
-                        <p className="text-gray-600">
-                          Draft and iterate on websites, graphics, documents, and code alongside
-                          your chat with Artifacts.
-                        </p>
-                      </div>
-            
-                      <div className="space-y-4">
-                        <div className="flex items-center space-x-3">
-                          <FileText className="h-6 w-6" />
-                          <h2 className="text-2xl font-serif">Bring your knowledge</h2>
-                        </div>
-                      </div>
-            
-                      <div className="space-y-4">
-                        <div className="flex items-center space-x-3">
-                          <Users className="h-6 w-6" />
-                          <h2 className="text-2xl font-serif">Share and collaborate with your team</h2>
-                        </div>
-                      </div>
-          </div>
-        </section>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    {/* Feature 1: Resume Upload & Parsing */}
+    <div className="space-y-4">
+      <div className="flex items-center space-x-3">
+        <FileText className="h-6 w-6" />
+        <h2 className="text-2xl font-serif">Effortless Resume Parsing</h2>
+      </div>
+      <p className="text-gray-600">
+        Upload your resume and let our AI quickly extract your skills, experience, and career goals, setting the stage for targeted applications.
+      </p>
+    </div>
+
+    {/* Feature 2: Personalized Application Emails */}
+    <div className="space-y-4">
+      <div className="flex items-center space-x-3">
+        <MessageSquare className="h-6 w-6" />
+        <h2 className="text-2xl font-serif">Custom Application Emails</h2>
+      </div>
+      <p className="text-gray-600">
+        Our system generates tailored emails for each job opportunity, ensuring your application perfectly aligns with the job requirements.
+      </p>
+    </div>
+
+    {/* Feature 3: Automated Multi-Company Applications */}
+    <div className="space-y-4">
+      <div className="flex items-center space-x-3">
+        <Users className="h-6 w-6" />
+        <h2 className="text-2xl font-serif">Automated Submissions</h2>
+      </div>
+      <p className="text-gray-600">
+        With a single setup, our platform sends your applications to multiple companies—eliminating tedious manual submissions and saving you time.
+      </p>
+    </div>
+  </div>
+</section>
 
         {/* Pricing Section */}
         <section id="pricing" className="bg-gray-50 py-16">
@@ -199,30 +200,32 @@ const ClaudeLanding = () => {
             <h1 className="text-4xl font-serif text-center mb-16">Explore plans</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               <PricingCard
-                title="Free"
-                subtitle="For individuals to get started"
-                price="0"
-                period="Free for everyone"
+  title="Free"
+  subtitle="For early adopters (First 10 users only)"
+  price="0"
+  period="Limited offer for first 10 users"
                 features={[
-                  "Talk to Claude on the web, iOS, and Android",
-                  "Ask about images and docs",
-                  "Access to one of our latest models"
+                  "50 emails per day",
+    "Basic resume parsing",
+    "Limited personalized application emails",
+    "Access to core features"
                 ]}
               />
                 {/* Pro Plan */}
         <PricingCard
-          title="Pro"
-          subtitle="For Claude power users"
-          price="18"
-          period="Per month with annual subscription"
-          monthly="$216 billed up front. $20 if billed monthly."
-          features={[
-            "Everything in Free, plus:",
-            "More usage than Free",
-            "Access to Projects to organize documents and chats",
-            "Ability to use more models, like Claude 3.5 Sonnet and Claude 3 Opus",
-            "Early access to new features"
-          ]}
+ title="Pro"
+ subtitle="For professionals and high-volume users"
+ price="150"
+ period="Per week"
+ monthly="150rs billed weekly"
+ features={[
+   "1000 emails per day",
+   "Full security with spam prevention",
+   "Advanced resume parsing",
+   "Send documents (CV and resume) with applications",
+   "Early access to new features",
+   "Priority support and additional benefits"
+ ]}
         />
 
       
@@ -253,7 +256,7 @@ const ClaudeLanding = () => {
           {/* Logo Column */}
           <div className="flex items-start">
             <a href="/" className="text-white text-2xl font-bold">
-              AI
+              JOWB
             </a>
           </div>
 
