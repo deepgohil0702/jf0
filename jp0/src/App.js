@@ -5,6 +5,7 @@ import Pricing from './components/Pricing';
 import Getaccessform from './components/Getaccessform';
 import Faq from './components/Faq';
 import Textscrlrevl from './components/Textscrlrevl';
+import JobStatusTracker from './components/JobStatusTracker';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Faq" element={<Faq />} />
         <Route path="/tr" element={<Textscrlrevl />} />
         <Route path="/apply" element={<Getaccessform />} />
+        <Route path="/status" element={<JobStatusTracker />} />
        
       </Routes>
     </BrowserRouter>

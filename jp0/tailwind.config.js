@@ -9,10 +9,10 @@ module.exports = {
       },
       colors: {
         // Add your custom colors here
-        'background': '#fdfaf4', // Example red color
-        'darkbackground': '#f0eee6', // Example red color
-        'buttoncolour': '#c96442', // Example red color
-        'progressbar': '#5A1B06', // Example red color
+        'background': '#fdfaf4', 
+        'darkbackground': '#f0eee6', 
+        'buttoncolour': '#c96442', 
+        'progressbar': '#5A1B06', 
         'secondary': {
           100: '#E6E6E6',
           200: '#CCCCCC',
