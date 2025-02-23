@@ -104,7 +104,7 @@ const ClaudeLanding = () => {
       { text: 'Research', href: '#' }
     ],
     column2: [
-      { text: 'Terms of Service', href: '#' },
+      { text: 'Terms of Service', href: '/termsofservice' },
 
     ],
   };

@@ -6,6 +6,8 @@ import Getaccessform from './components/Getaccessform';
 import Faq from './components/Faq';
 import Textscrlrevl from './components/Textscrlrevl';
 import JobStatusTracker from './components/JobStatusTracker';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/tr" element={<Textscrlrevl />} />
         <Route path="/apply" element={<Getaccessform />} />
         <Route path="/status" element={<JobStatusTracker />} />
+        <Route path="/termsofservice" element={<TermsOfService />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
        
       </Routes>
     </BrowserRouter>
