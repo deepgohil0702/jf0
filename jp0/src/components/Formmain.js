@@ -69,7 +69,7 @@ const Formmain = () => {
       formData.append('keywords', 'python,java');
       formData.append('pdf_file', pdfFile);
 
-      const response = await fetch('https://8000-idx-forjobdeep-1738350784277.cluster-7ubberrabzh4qqy2g4z7wgxuw2.cloudworkstations.dev/startpipeline', {
+      const response = await fetch('https://jowb.vercel.app/startpipeline', {
         method: 'POST',
         body: formData,
       });

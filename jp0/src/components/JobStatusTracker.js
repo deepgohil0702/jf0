@@ -49,7 +49,7 @@ import React, { useEffect, useState } from 'react';
           useEffect(() => {
             const fetchStatus = async () => {
               try {
-                const response = await fetch(`https://8000-idx-forjobdeep-1738350784277.cluster-7ubberrabzh4qqy2g4z7wgxuw2.cloudworkstations.dev/status/${jobId}`);
+                const response = await fetch(`https://jowb.vercel.app/status/${jobId}`);
                 if (!response.ok) throw new Error(response.status === 404 ? 
                   "Job ID not found or expired" : "Failed to fetch status");
                 
