@@ -70,7 +70,7 @@ const Formmain = () => {
       formData.append('keywords', 'python,java');
       formData.append('pdf_file', pdfFile);
 
-      const response = await fetch('https://jowb.vercel.app/startpipeline', {
+      const response = await fetch('https://jowb-backend-prod.vercel.app/startpipeline', {
         method: 'POST',
         body: formData,
       });
