@@ -101,7 +101,8 @@ const ClaudeLanding = () => {
   const footerLinks = {
     column1: [
       { text: 'Product', href: '#' },
-      { text: 'Research', href: '#' }
+      { text: 'Research', href: '#' },
+      { text: 'Linkedin', href: 'https://www.linkedin.com/company/jowb-tech/' }
     ],
     column2: [
       { text: 'Terms of Service', href: '/termsofservice' },
