@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MessageSquare, FileText, Users, Check, Plus, X } from 'lucide-react';
 import Formmain from './Formmain';
+import ThreeCardsComponent from './ThreeCardsComponent';
 // Scroll Progress Bar Component
 const ScrollProgress = () => {
   const [progress, setProgress] = useState(0);
@@ -196,7 +197,7 @@ const faqData = [
 </section>
 
         {/* Pricing Section */}
-        <section id="pricing" className="bg-gray-50 py-16">
+        <section id="pricing" className="bg-background py-16">
           <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl font-serif text-center mb-16">Explore plans</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -233,7 +234,7 @@ const faqData = [
             </div>
           </div>
         </section>
-
+<ThreeCardsComponent/>
         {/* FAQ Section */}
         <section id="faq" className="max-w-3xl mx-auto px-4 py-16">
           <h1 className="text-4xl font-serif text-center mb-12">Frequently asked questions</h1>

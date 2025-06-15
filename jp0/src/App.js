@@ -8,6 +8,8 @@ import Textscrlrevl from './components/Textscrlrevl';
 import JobStatusTracker from './components/JobStatusTracker';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import AnimatedGallery from './components/AnimatedGallery';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/status" element={<JobStatusTracker />} />
         <Route path="/termsofservice" element={<TermsOfService />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/replys" element={<AnimatedGallery />} />
+
        
       </Routes>
     </BrowserRouter>
